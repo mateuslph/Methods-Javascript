@@ -13,7 +13,8 @@ const cliente = {
     saldo : 100,
     depositar : function(valor) {
         this.saldo += valor
-    }
+    },
+    pais : `Brasil`  // acrescentado aqui, pois no objeto nao eh possivel usar o push
 }
 
 console.log(`Meu nome é: ${cliente.nome}, e minha idade é: ${cliente.idade} anos.`)
@@ -50,3 +51,42 @@ mostrado na tela */
 console.log(`Saldo inicial:  ${cliente.saldo}`)
 cliente.depositar(30)
 console.log(`Saldo atual: ${cliente.saldo}`)
+
+// comando "for in" para percorrer array sem a necessidade de usar o ponto para cada (ex.: cliente.saldo, etc)
+
+/* aqui eu acrescentei comandos "if" para que a organizacao do console aceite a insercao manual de novos campos para o
+objeto "cliente" */
+
+/* usando um contador, mesmo de forma dinamica, identifica-se o ultimo atributo do objeto para não acrescentar
+a virgula, e sim o ponto final */
+
+let relatorio = ``
+let cont = 0
+for (let info in cliente) {  // aqui é contado o numero de chaves do objeto
+    cont ++
+}
+let aux = cont  // passa para um auxiliar
+cont = 0  // zera o contador
+for (info in cliente) {
+    cont ++  // identifica a posicao atual do loop "for in"
+    if (typeof cliente[info] === `object` || typeof cliente[info] === `function`) {  /* para nao dar erro no console, pula as
+        chaves que nao sao primarias, identificadas pelo tipo */
+        continue
+    } else if (cont != aux) {  // atraves do contador identifica quando ainda eh necessario usar a virgula
+        relatorio += `
+        ${info} => ${cliente[info]},
+        `
+    } else {  // caso seja a ultima posicao, eh acrescentado um ponto final
+        relatorio += `
+        ${info} => ${cliente[info]}.
+        `
+    }
+}
+console.log(`Relatório:
+${relatorio}
+`)
+if (aux != 1) {  // nessa parte do codigo eh montado a frase do console de acordo com a pluralidade
+    console.log(`Números de atributos: ${cont}`)
+} else {
+    console.log(`Número de atributo: ${cont}`)
+}
