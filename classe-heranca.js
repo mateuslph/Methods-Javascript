@@ -2,7 +2,7 @@
 a objeto */
 
 class Cliente {  // classe construtora, possui parametros e metodos
-    constructor(nome,email,cpf,saldo){
+    constructor(nome, email, cpf, saldo){
      this.nome = nome  // parametro
      this.email = email  // parametro
      this.cpf = cpf  // parametro
@@ -19,8 +19,8 @@ class Cliente {  // classe construtora, possui parametros e metodos
   }
   
   class ClientePoupanca extends Cliente{  // extencao da classe "Cliente", heranca
-    constructor(nome,email,cpf,saldo,saldoPoupanca){  // parametros para nova classe
-      super(nome,email,cpf,saldo)  // parametros da classe "Cliente"
+    constructor(nome, email, cpf, saldo, saldoPoupanca){  // parametros para nova classe
+      super(nome, email, cpf, saldo)  // parametros da classe "Cliente"
       this.saldoPoupanca = saldoPoupanca  // parametro adicional para essa classe de heranca
     }
   
@@ -29,7 +29,7 @@ class Cliente {  // classe construtora, possui parametros e metodos
     }
   }
   
-  const andre = new ClientePoupanca("Andre","a@email.com","2255887744",100,200)  // criacao do objeto "andre"
+  const andre = new ClientePoupanca("Andre", "a@email.com", "2255887744", 100, 200)  // criacao do objeto "andre"
   
   console.log(andre)
   
